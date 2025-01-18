@@ -1,0 +1,19 @@
+# Node.js modules
+node_modules/
+
+# Build artifacts
+dist/
+build/
+
+# IDE/Editor settings
+.vscode/
+.idea/
+
+# Temporary files
+*.log
+*.tmp
+*.bak
+
+# Local configuration
+.env
+.local.env
