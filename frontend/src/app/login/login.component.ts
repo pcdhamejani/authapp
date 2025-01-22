@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from '../auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,9 @@ export class LoginComponent {
   message: string | null = null;
   isSuccess: boolean = false;
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService,
+              private router: Router
+  ) {}
 
   login() {
     this.authService.login(this.user).subscribe({
@@ -26,6 +29,7 @@ export class LoginComponent {
         this.message = 'Login successful!';
         this.isSuccess = true;
         this.clearForm();
+        this.router.navigate(['/']);
       },
       error: (error) => {
         this.message = error.error.message || 'Error during login.'; // Handle error message from backend
